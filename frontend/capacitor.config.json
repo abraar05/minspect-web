@@ -1,0 +1,13 @@
+{
+  "appId": "com.craftkicks.minspect",
+  "appName": "@mInspect",
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorUpdater": {
+      "autoUpdate": "atBackground",
+      "updateUrl": "https://updates.example.com/minspect/check-update.json",
+      "resetWhenUpdate": true,
+      "allowModifyUrl": false
+    }
+  }
+}
