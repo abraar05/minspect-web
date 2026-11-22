@@ -3,6 +3,11 @@
 ## Current phase
 Phase 1 (Foundation) — batches 1 and 2 complete; core operations planning next.
 
+## Live preview
+Hidden/noindex web preview: `https://abraar05.github.io/minspect-web/`
+Source repo: `https://github.com/abraar05/minspect-web` (`main` source, `gh-pages` built site).
+Login/Google buttons are disabled until a real backend API and OAuth credentials are configured.
+
 ## Completed modules
 - Project setup, approved architecture and policy documents.
 - Laravel application bootstrap and configuration.

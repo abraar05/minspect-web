@@ -1,5 +1,12 @@
 # Test Report — @mInspect
 
+## Live deployment
+- GitHub repo created: `https://github.com/abraar05/minspect-web`
+- GitHub Pages status: `built`
+- Live hidden/noindex preview: `https://abraar05.github.io/minspect-web/`
+- Verified HTTP 200 for `/`, `/assets/index-DBUDqy5l.js`, `/assets/index-CZQ21YuD.css`, `/404.html`.
+- Verified `/login` serves the SPA fallback (`404.html`) with `<div id="root"></div>`.
+
 ## Environment limitation
 This workspace has Node.js, npm, Java 17 and Android SDK tools, but no PHP, Composer, Docker or PostgreSQL. PHPUnit and Docker-based verification cannot be executed here. No PHP-side test result is claimed.
 
