@@ -20,3 +20,6 @@
 /frontend/android/app/build
 /frontend/android/local.properties
 /frontend/.env
+/backend/.env
+/backend/minspect.db
+/backend/node_modules

@@ -7,6 +7,16 @@
 - Verified HTTP 200 for `/`, `/assets/index-DBUDqy5l.js`, `/assets/index-CZQ21YuD.css`, `/404.html`.
 - Verified `/login` serves the SPA fallback (`404.html`) with `<div id="root"></div>`.
 
+## Live API takeover checks
+- Local Node API health passed: `GET /api/health`.
+- Public tunnel health passed: `GET https://antonio-trio-dozens-laden.trycloudflare.com/api/health`.
+- Live admin login passed with the seeded local admin account.
+- Live `GET /api/me` passed with the returned token.
+- Live admin Google allowlist list/add/disable/remove passed.
+- Invalid password rejected with `401`.
+- Frontend rebuilt with the live API base and redeployed to GitHub Pages; Pages status `built`.
+- Google OAuth status endpoint returns `configured: false`; Google button is disabled until credentials are supplied.
+
 ## Environment limitation
 This workspace has Node.js, npm, Java 17 and Android SDK tools, but no PHP, Composer, Docker or PostgreSQL. PHPUnit and Docker-based verification cannot be executed here. No PHP-side test result is claimed.
 

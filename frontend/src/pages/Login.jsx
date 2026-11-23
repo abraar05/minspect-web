@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
-import { API_BASE, API_CONFIGURED } from '../api';
+import { api, API_BASE, API_CONFIGURED } from '../api';
 
 export default function Login() {
   const { login } = useAuth();
@@ -10,6 +10,14 @@ export default function Login() {
   const [params] = useSearchParams();
   const [error, setError] = useState(params.get('error') || '');
   const [busy, setBusy] = useState(false);
+  const [googleReady, setGoogleReady] = useState(false);
+
+  useEffect(() => {
+    if (!API_CONFIGURED) return;
+    api('/auth/google/status')
+      .then((status) => setGoogleReady(Boolean(status.configured)))
+      .catch(() => setGoogleReady(false));
+  }, []);
 
   const submit = async (event) => {
     event.preventDefault();
@@ -35,12 +43,15 @@ export default function Login() {
           <p className="error">Live backend is not configured yet; sign-in is disabled.</p>
         )}
         <a
-          className={API_CONFIGURED ? 'google-button' : 'google-button disabled'}
-          href={API_CONFIGURED ? `${API_BASE}/auth/google/redirect` : undefined}
-          aria-disabled={!API_CONFIGURED}
+          className={API_CONFIGURED && googleReady ? 'google-button' : 'google-button disabled'}
+          href={API_CONFIGURED && googleReady ? `${API_BASE}/auth/google/redirect` : undefined}
+          aria-disabled={!API_CONFIGURED || !googleReady}
         >
           Continue with Google
         </a>
+        {API_CONFIGURED && !googleReady && (
+          <p className="muted center">Google sign-in needs OAuth credentials from the administrator.</p>
+        )}
         <div className="divider"><span>or</span></div>
         <form onSubmit={submit} className="stack">
           <label>

@@ -6,7 +6,12 @@ Phase 1 (Foundation) — batches 1 and 2 complete; core operations planning next
 ## Live preview
 Hidden/noindex web preview: `https://abraar05.github.io/minspect-web/`
 Source repo: `https://github.com/abraar05/minspect-web` (`main` source, `gh-pages` built site).
-Login/Google buttons are disabled until a real backend API and OAuth credentials are configured.
+Local admin login is live through the temporary API tunnel. Google sign-in remains disabled until OAuth credentials are configured.
+
+## Live backend (temporary)
+- Node/sqlite3 API: `https://antonio-trio-dozens-laden.trycloudflare.com/api`
+- Health: `https://antonio-trio-dozens-laden.trycloudflare.com/api/health`
+- The tunnel depends on the local backend process remaining running; it is not a permanent Render deployment.
 
 ## Local admin
 - `DatabaseSeeder` creates the first local admin from `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD` and `SEED_ADMIN_NAME`.
@@ -58,6 +63,7 @@ Login/Google buttons are disabled until a real backend API and OAuth credentials
 - `render.yaml` prepared for a free Render Docker web service + free PostgreSQL database.
 - Dockerfile now runs `migrate --seed --force` before serving on Render's `PORT`.
 - Render still requires an authenticated owner to connect the GitHub repo and supply `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD`, Google OAuth values and the final `APP_URL`.
+- A temporary Node/sqlite3 API is running locally and exposed through Cloudflare Quick Tunnel for live testing.
 
 ## Exact next task
 Build batch 3: migrations, models and REST endpoints for categories, brands, products, product variants, suppliers, customers, warehouses and the stock ledger, with PHPUnit feature tests.
