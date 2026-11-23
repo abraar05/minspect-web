@@ -54,5 +54,10 @@ Login/Google buttons are disabled until a real backend API and OAuth credentials
 - PHP/Composer/Docker/PostgreSQL are unavailable here, so migrations and PHPUnit remain unrun locally.
 - Frontend module cards are informational only; core operations are planned for the next batch.
 
+## Backend deployment
+- `render.yaml` prepared for a free Render Docker web service + free PostgreSQL database.
+- Dockerfile now runs `migrate --seed --force` before serving on Render's `PORT`.
+- Render still requires an authenticated owner to connect the GitHub repo and supply `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD`, Google OAuth values and the final `APP_URL`.
+
 ## Exact next task
 Build batch 3: migrations, models and REST endpoints for categories, brands, products, product variants, suppliers, customers, warehouses and the stock ledger, with PHPUnit feature tests.

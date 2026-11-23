@@ -1,0 +1,74 @@
+services:
+  - type: web
+    name: minspect-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: APP_NAME
+        value: "@mInspect"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://minspect-api.onrender.com
+      - key: APP_TIMEZONE
+        value: UTC
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: minspect-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: minspect-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: minspect-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: minspect-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: minspect-db
+          property: password
+      - key: CACHE_STORE
+        value: file
+      - key: SESSION_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: SANCTUM_TOKEN_PREFIX
+        value: ms_
+      - key: FRONTEND_URL
+        value: https://abraar05.github.io/minspect-web
+      - key: SEED_ADMIN_NAME
+        value: Local Administrator
+      - key: SEED_ADMIN_EMAIL
+        sync: false
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
+
+databases:
+  - name: minspect-db
+    databaseName: minspect
+    user: minspect
+    plan: free
+    region: oregon
