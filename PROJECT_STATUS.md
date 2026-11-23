@@ -8,6 +8,11 @@ Hidden/noindex web preview: `https://abraar05.github.io/minspect-web/`
 Source repo: `https://github.com/abraar05/minspect-web` (`main` source, `gh-pages` built site).
 Login/Google buttons are disabled until a real backend API and OAuth credentials are configured.
 
+## Local admin
+- `DatabaseSeeder` creates the first local admin from `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD` and `SEED_ADMIN_NAME`.
+- A gitignored `.env` has been prepared locally with the requested admin email/password; credentials are not committed.
+- `docker compose up --build -d` now runs `migrate --seed --force`, so the admin is created on first boot.
+
 ## Completed modules
 - Project setup, approved architecture and policy documents.
 - Laravel application bootstrap and configuration.

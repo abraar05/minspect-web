@@ -54,11 +54,14 @@ This workspace has Node.js, npm, Java 17 and Android SDK tools, but no PHP, Comp
 ```bash
 cp .env.example .env
 cp frontend/.env.example frontend/.env
-# set APP_KEY, DB_PASSWORD, Google OAuth values, VITE_API_BASE_URL and VITE_UPDATE_URL
+# set APP_KEY, DB_PASSWORD, SEED_ADMIN_EMAIL/PASSWORD, Google OAuth values, VITE_API_BASE_URL and VITE_UPDATE_URL
 docker compose up --build -d
 docker compose exec app php artisan key:generate
 docker compose exec app php artisan migrate --seed
 docker compose exec app php artisan test
+
+# or seed the local admin only on an existing database:
+docker compose exec app php artisan db:seed --class=DatabaseSeeder
 cd frontend && npm install && npm run build
 ```
 
